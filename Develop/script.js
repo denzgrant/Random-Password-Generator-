@@ -6,63 +6,77 @@ var specialCharacters = "!@#$%^&*()_+-";
 //List of questions regarding password preference
 var userSelect = {
   numOfCharacters: function () {
-    numOfCharAnswer = window.prompt("How many characters do you want?");
-    if (numOfCharAnswer < 8) {
-      alert("Password has to be 8 characters or more");
-    } else if (numOfCharAnswer > 128) {
-      alert("Password cannot be more than 128 characters");
-    }
+    numOfCharAnswer = prompt("How many characters do you want?");
   },
   upperChar: function () {
-    upperCharAnswer = window.prompt("Do you want to use an uppercase letter?");
+    upperCharAnswer = confirm("Do you want to use an uppercase letter?");
     if (upperCharAnswer === true) {
-      for (var i = 0; i < numOfCharAnswer; i++) {
-        result += upperCaseLetters.charAt(Math.floor(Math.random() * upperCaseLetters));
-      }
-    }
+      var result = "";
+      result += upperCaseLetters[Math.floor(Math.random() * upperCaseLetters.length)];
+    } else {
+      alert("No uppercase letter has been selected");
+    };
+    return result;
   },
+
   specialChar: function () {
-    specialCharAnswer = window.prompt(
-      "Do you want to use an special character?"
-    );
-    if (specialCharAnswer === true) {
-      for (var i = 0; i < numOfCharAnswer; i++) {
-        result += specialCharacters.charAt(Math.floor(Math.random() * specialCharacters));
-      }
-    }
+    specialCharAnswer = confirm("Do you want to use an special character?");
+    if (upperCharAnswer === true) {
+      var result = "";
+      result += specialCharacters[Math.floor(Math.random() * specialCharacters.length)];
+    } else {
+      alert("No special character has been selected");
+    };
+    return result;
   },
+
   lowerChar: function () {
-    lowerCharAnswer = window.prompt("Do you want to use a lowercase letter?");
+    lowerCharAnswer = confirm("Do you want to use a lowercase letter?");
     if (lowerCharAnswer === true) {
-      for (var i = 0; i < numOfCharAnswer; i++) {
-        result += lowerCaseLetters.charAt(Math.floor(Math.random() * lowerCaseLetters));
-      }
-    }
+      var result = "";
+      result += lowerCaseLetters[Math.floor(Math.random() * lowerCaseLetters.length)];
+    } else {
+      alert("No lowercase letter has been selected");
+    };
+    return result;
   },
   numChar: function () {
-    numCharAnswer = window.confirm("Do you want to use a number?");
+    numCharAnswer = confirm("Do you want to use a number?");
     if (numCharAnswer === true) {
+      var result = "";
       result += Math.floor(Math.random() * 127) + 1;
-    }
+    } else {
+      alert("No number has been selected");
+    };
+    return result;
   }
 };
-
 // Write password to the #password input
 function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
-  passwordText.value = password;
+  generateBtn.addEventListener("click", createPassword);
+  // var passwordText = document.querySelector("#password");
+  // passwordText.value = password;
+  var upperCharResult = userSelect.upperChar();
+  var specialCharResult = userSelect.specialChar();
+  var lowerCharResult = userSelect.lowerChar();
+  var numCharResult = userSelect.numChar();
+  const userResult = upperCharResult + specialCharResult + lowerCharResult + numCharResult;
+  console.log(userResult);
+  document.getElementById("password").placeholder = userResult;
 }
-
 ////look up document object add text and button click
-
 // Add event listener to generate button
-generateBtn.addEventListener("click", createPassword);
 
 //User is going to be questioned regarding password preference
-// function createPassword() {
-//   Object.values(userSelect)
-// } 
-//Need to find a way to loop through object's values 
+function createPassword() {
+  numOfCharAnswer = prompt("How many characters do you want?\nHas to be a number between 8 and 128");
+  while (numOfCharAnswer > 128 || numOfCharAnswer < 8) {
+    alert("Has to be a number between 8 to 128");
+    numOfCharAnswer = prompt("How many characters do you want?");
+    //User won't be able to continue if they select an option less than 8 or more than 128 
+  }
+  alert("Thank you");
+  writePassword();
+}
 
 
