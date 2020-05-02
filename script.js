@@ -3,89 +3,79 @@ const generateBtn = document.querySelector("#generate");
 const clearForm = document.querySelector(".btn");
 
 // const possipleCharacterSlection = [0,1,2,3,4,5,6,7,8,9,0,]
-var userPassword = [];
+let possibleCharacters = "";
+let userPassword = [];
 
+//user selection will add a character to final password
+const ranLowerCase = "abcdefghijklmnopqrstuvwxyz";
+const ranUpperCase = ranLowerCase.toUpperCase();
+const ranSpecialChar = "~!@#$%^&*()_+:;.,";
+const ranNumber = "1234567890";
+let numOfCharAnswer;
 
-//user selection will add a character to final password 
-const ranLowerCase = ['abcdefghijklmnopqrstuvwxyz']
-const ranUpperCase = ranLowerCase.toString().toUpperCase().split();
-const ranSpecialChar = ['~!@#$%^&*()_+:;.,']
-const ranNumber = ['1234567890']
-
-//Generate button will start the questions for the user 
+//Generate button will start the questions for the user
 generateBtn.addEventListener("click", function () {
- numberCharQ(); 
+  numberCharQ();
 });
 
 //List of questions regarding password preference
 
-let numOfCharAnswer;
-
-let numberCharQ = () => { 
-  let numOfCharAnswer = prompt("How many characters do you want?");
-  userPrompts();
-  while (numOfCharAnswer > 128 || numOfCharAnswer < 8) {
+let numberCharQ = () => {
+  let charLength = prompt("How many characters do you want?");
+  while (charLength > 128 || charLength < 8) {
     alert("Has to be a number between 8 to 128");
-    numOfCharAnswer = prompt("How many characters do you want?");
+    charLength = prompt("How many characters do you want?");
   }
-  return numOfCharAnswer
- }
-console.log(numOfCharAnswer);
+  numOfCharAnswer = charLength;
+  userPrompts();
+};
 
- let userPrompts = () => {
- specialCharAnswer = confirm("Do you want to use an special character?");
- if (specialCharAnswer === true) {
-   userPassword += [...userPassword, specialCharAnswer]
-   return userPassword
- }
- lowerCharAnswer = confirm("Do you want to use a lowercase letter?");
- if (lowerCharAnswer === true) {
-   userPassword += [...userPassword, lowerCharAnswer];
-   return userPassword
- }
- numCharAnswer = confirm("Do you want to use a number?");
- if (numCharAnswer === true) {
-   userPassword += [...userPassword, numOfCharAnswer];
-   return userPassword
- }
- upperCharAnswer = confirm("Do you want to use an uppercase letter?");
- if (upperCharAnswer === true) {
-   userPassword += [...userPassword,ranUpperCase];
-   return userPassword; 
- }
+let userPrompts = () => {
+  let specialCharAnswer = confirm("Do you want to use an special character?");
+  if (specialCharAnswer === true) {
+    possibleCharacters = possibleCharacters + ranSpecialChar;
+  }
+  let lowerCharAnswer = confirm("Do you want to use a lowercase letter?");
+  if (lowerCharAnswer === true) {
+    possibleCharacters = possibleCharacters + ranLowerCase;
+  }
+  let numConfrim = confirm("Do you want to use a number?");
+  if (numConfrim === true) {
+    possibleCharacters = possibleCharacters + ranNumber;
+  }
+  let upperCharAnswer = confirm("Do you want to use an uppercase letter?");
+  if (upperCharAnswer === true) {
+    possibleCharacters = possibleCharacters + ranUpperCase;
+  }
+  //Condition to confirm that a citeria was selected 
+  if (
+    upperCharAnswer === false &&
+    specialCharAnswer === false &&
+    lowerCharAnswer === false &&
+    numConfrim === false
+  ) {
+    alert("You have to select an option");
+    userPrompts();
+  }
+  console.log(possibleCharacters);
+  generatePassword();
+};
 
- 
- if (upperCharAnswer == false &&
-   specialCharAnswer == false &&
-   lowerCharAnswer == false &&
-   numCharAnswer == false) {
+let generatePassword = () => {
+  //loop for each character requested
+  console.log(`Password length: ${numOfCharAnswer}`);
+  let password = "";
+  for (let i = 0; i < numOfCharAnswer; i++) {
+    //pick random character from possible characters
+    password =
+      password +
+      possibleCharacters[Math.floor(Math.random() * possibleCharacters.length)];
+  }
+  console.log(password);
+  let passwordText = document.querySelector('#password');
 
-   alert("You have to select an option");
-   userPrompts(); 
- }
- }
- 
- console.log(userPassword);
- //use spread to put ran vars if confirm is true
-//  let stringArray = [...ranLowerCase, ...ranUpperCase, ...ranSpecialChar, ...ranNumber];
-//  userSelection = stringArray.join('')
+  passwordText.value = password;
 
-//  console.log(userSelection); 
+};
 
-//  for (var i = 0; i < charNum; i++) {
-//   let randomElement = userSelection[Math.floor(Math.random() * userSelection.length )];
-// }
 
-// console.log(userSelection.length)
-// console.log(randomElement); 
-// let passwordType = (char) => {
-//   confirm("Do you want a " + char + "?")
-//   if (passwordType === true) {
-//     console.log("test")
-//   }
-// }
-
-// passwordType("Number?");
-// passwordType("Special Character?");
-// passwordType("Uppercase letter?");
-// passwordType("Lowercase letter?");
