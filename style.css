@@ -3,7 +3,9 @@
 *::after {
   box-sizing: border-box;
 }
-
+#lock {
+  font-size: 4em;
+}
 html,
 body,
 .wrapper {
@@ -31,7 +33,7 @@ header {
   text-align: center;
   padding: 20px;
   padding-top: 0px;
-  color: hsl(206, 17%, 28%);
+  color: hsl(46, 95%, 47%);
 }
 
 .card {

@@ -2,7 +2,6 @@
 const generateBtn = document.querySelector("#generate");
 const clearForm = document.querySelector(".btn");
 
-// const possipleCharacterSlection = [0,1,2,3,4,5,6,7,8,9,0,]
 let possibleCharacters = "";
 let userPassword = [];
 
@@ -22,6 +21,9 @@ generateBtn.addEventListener("click", function () {
 
 let numberCharQ = () => {
   let charLength = prompt("How many characters do you want?");
+  if (charLength === false) {
+    return "Good Bye!";
+  }
   while (charLength > 128 || charLength < 8) {
     alert("Has to be a number between 8 to 128");
     charLength = prompt("How many characters do you want?");
@@ -31,28 +33,26 @@ let numberCharQ = () => {
 };
 
 let userPrompts = () => {
+  possibleCharacters = ''
+
   let specialCharAnswer = confirm("Do you want to use an special character?");
-  if (specialCharAnswer === true) {
-    possibleCharacters = possibleCharacters + ranSpecialChar;
-  }
+  specialCharAnswer ? possibleCharacters = possibleCharacters + ranSpecialChar : "";
+
   let lowerCharAnswer = confirm("Do you want to use a lowercase letter?");
-  if (lowerCharAnswer === true) {
-    possibleCharacters = possibleCharacters + ranLowerCase;
-  }
-  let numConfrim = confirm("Do you want to use a number?");
-  if (numConfrim === true) {
-    possibleCharacters = possibleCharacters + ranNumber;
-  }
+  lowerCharAnswer ? possibleCharacters = possibleCharacters + ranLowerCase : "";
+
+  let numConfirm = confirm("Do you want to use a number?");
+  numConfirm ? possibleCharacters = possibleCharacters + ranNumber : "";
+
   let upperCharAnswer = confirm("Do you want to use an uppercase letter?");
-  if (upperCharAnswer === true) {
-    possibleCharacters = possibleCharacters + ranUpperCase;
-  }
+  upperCharAnswer ? possibleCharacters = possibleCharacters + ranUpperCase : "";
+
   //Condition to confirm that a citeria was selected 
   if (
     upperCharAnswer === false &&
     specialCharAnswer === false &&
     lowerCharAnswer === false &&
-    numConfrim === false
+    numConfirm === false
   ) {
     alert("You have to select an option");
     userPrompts();
