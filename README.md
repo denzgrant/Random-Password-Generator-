@@ -6,7 +6,7 @@
  ## User Story
  ```
 As a user I want a secure password
-I want to be able to customize my password by selecting if I want to use numbsers, uppercase or lowercase letters, and special characters.
+I want to be able to customize my password by selecting if I want to use numbers, uppercase or lowercase letters, and special characters.
 So that a random selection of the chosen characters will appear by a click of a button.
   
 ```
