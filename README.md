@@ -1,6 +1,7 @@
 <img src="https://img.shields.io/badge/Node-12.16.3-brightgreen"> <img src="https://img.shields.io/github/last-commit/denzgrant/Random-Password-Generator-">
  <img src="https://img.shields.io/badge/-JavaScript-brightgreen">
 <h1><span style='font-size:100px;'>&#128274;</span>Random-Password-Generator<span style='font-size:100px;'>&#128273;</span></h1>
+<img src="/demo.gif" alt="demogif">  
  
  ## User Story
  ```
@@ -11,7 +12,6 @@ So that a random selection of the chosen characters will appear by a click of a 
 ```
 
  <br>
-<img src="/ezgif.com-crop.gif" alt="demogif">  
 </p>
   <h2>Table of Contents</h2>
   <ul> 
