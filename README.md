@@ -1,5 +1,4 @@
- <img src="https://img.shields.io/github/last-commit/denzgrant/Random-Password-Generator-">
- <img src="https://img.shields.io/badge/-JavaScript-brightgreen">
+<img src="https://img.shields.io/github/last-commit/denzgrant/Random-Password-Generator-"><img src="https://img.shields.io/badge/-JavaScript-brightgreen">
 <h1><span style='font-size:100px;'>&#128274;</span>Random-Password-Generator<span style='font-size:100px;'>&#128273;</span></h1>
 <img src="/demo.gif" alt="demogif">  
  
