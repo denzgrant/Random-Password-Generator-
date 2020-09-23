@@ -23,7 +23,7 @@ So that a random selection of the chosen characters will appear by a click of a 
   <h2 id="Installation">Installation</h2>                         
   <p>
   <ol>
-<li>Clone this repository.<pre><code> git <span class="hljs-keyword">clone</span> <span class="hljs-title">https</span>https://github.com/denzgrant/Random-Password-Generator-.git
+<li>Clone this repository.<pre><code> git <span class="hljs-keyword">clone</span> <span class="hljs-title">https://github.com/denzgrant/Random-Password-Generator-.git
 </code></pre></li>
 </ol>
   <h2 id="Usage">Usage</h2>
